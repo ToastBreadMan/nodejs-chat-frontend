@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>Chat</h1>
+        <button v-on:click="send()">Send</button>
     </div>
 </template>
 
@@ -16,16 +17,19 @@ export default {
          email: ''
      }
  } ,
+ methods: {
+     send() {
+         this.socket.emit('message', "test")
+     }
+ },
  created() {
-     /*
-     EventBus.$on("email", function (email) {
-         self.email = email
-         console.log(self.email, email)
-     })
-     */
     this.email = EventBus.$data.email
+    console.log(this.email)
+    if (!this.email){
+        this.$router.push('/login')
+    }
     this.socket.on('connect', ()=> {
-         this.socket.emit('join', {email: self.email})
+         this.socket.emit('join', {email: this.email})
      })
  }
 }
