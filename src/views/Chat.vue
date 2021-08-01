@@ -24,8 +24,9 @@ export default {
      })
      */
     this.email = EventBus.$data.email
+    console.log(this.email);
     this.socket.on('connect', ()=> {
-         this.socket.emit('join', {email: self.email})
+         this.socket.emit('join', {email: this.email})
      })
  }
 }
