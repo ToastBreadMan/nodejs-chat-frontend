@@ -1,8 +1,13 @@
 <template>
-    <div>
+    <div id="login">
         <h1>Login</h1>
-        <input v-model="email" type="email">
+        {{nodify}}
+        <div>
+        <input v-model="email" type="email" placeholder="Email">
+        </div>
+        <div>
         <button v-on:click="nodify = !nodify">Get notification</button>
+        </div>
         <button v-on:click="submitRequest">Go to chat room</button>
     </div>
 </template>
@@ -37,3 +42,28 @@ export default {
     }
 }
 </script>
+<style scoped>
+#login {
+    align-items: center;
+    text-align: center;
+    padding-top: 20px;
+}
+#login div {
+    padding: 10px;
+}
+button {
+    border-radius: 10px;
+    width: 300px;
+    height: 20px;
+    background: lightgreen;
+    border-color: lightgreen;
+    border: none;
+    }
+input {
+    width: 300px;
+    border-radius: 10px;
+    border: none;
+    background: lightgreen;
+    height: 20px;
+}
+</style>
